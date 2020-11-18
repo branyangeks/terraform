@@ -1,20 +1,20 @@
 terraform {
   required_providers {
     docker = {
-      source = "terraform-providers/docker"
+      source = "qasymphony/tomcat"
     }
   }
 }
 
 provider "docker" {}
 
-resource "docker_image" "nginx" {
-  name         = "nginx:latest"
+resource "docker_image" "tomcat" {
+  name         = "tomcat:latest"
   keep_locally = false
 }
 
-resource "docker_container" "nginx" {
-  image = docker_image.nginx.latest
+resource "docker_container" "tomcat" {
+  image = docker_image.tomcat.latest
   name  = "tutorial"
   ports {
     internal = 80
